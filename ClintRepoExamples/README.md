@@ -1,0 +1,1 @@
+We used these examples from Clint Heyer's interactivity repository: https://github.com/ClintH/interactivity in order to get a better understanding of how to connect arduino to a server via a serial bridge. 
