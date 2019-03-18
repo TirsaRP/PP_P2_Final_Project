@@ -5,19 +5,21 @@ Physical Prototyping & Programming II joint final project: Group 6
 
 **What is the project about**
 
-The goal of the project is to explore possible ways to interact with and manipulate light to:
+The goal of the project is to explore ways to interact with and manipulate light to:
   - Turn it on/off
   - Change the hue
   - Change the brigthness
   
-The project however does not aim to design light, but specifically focuses on human interaction with sensors, collection of data and using that data through a serial bridge to change the behaviour of lights.
+The project however does not aim to design light, but specifically focuses on human interaction with sensors, collection of data through a serial bridge and use of that data to change the behaviour of lights.
+
 
 
 
 **What is the project exploring**
 
-Our group is exploring human interaction with lights in public spaces such as underpasses and similar settings in a city that are commonly considered to make one uncomfortable, feel unsafe and are generally avoided.
-We are not to solve a public safety problem, but rather aim to explore ways to make poorly lit public spaces more playful through interaction and thus more acceptable for daily use.
+Our group is exploring human interaction with lights in public spaces such as underpasses and similar settings in a city that are commonly considered to make one feel uneasy, unsafe and are generally avoided.
+We are not to solve a public safety problem, but rather aim to explore ways to make poorly lit public spaces more playful through interaction and thus more acceptable for daily use as a pedestrian.
+
 
 
 
@@ -27,9 +29,11 @@ The examples and code in this repository can be helpful for public space designe
 
 
 
+
 **How users can get started with the project:**
 
-Description here
+Before starting, read the README files in every folder to get informed about what the examples do.
+You might need to downgrade your node.js version for the examples to work.
   
 To get started:
 ```sh
