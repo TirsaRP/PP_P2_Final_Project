@@ -1,0 +1,134 @@
+<!-- code edited by: Veronika Bendoriute-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>ws-serial-bridge</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>ws-serial-bridge</h1>
+    <h2>Send</h2>
+    <form id="sendForm">
+     <input type="text" value="<test,2,10>" id="sendtoSerial"></input>
+      <input type="submit" value="Send">
+    </form>
+
+    <h2>Received</h2>
+    <span id="lastMsg">(nothing)</span>
+    <script type="module" src="reconnecting-websocket.js"></script>
+    <script src="script.js"></script></br></br></br></br>
+
+<!--CUSTOM GUI-->
+  <!--DIV FOR TILE-GRID. 
+    1.Grid Layout Module code taken from https://www.w3schools.com/css/css_grid.asp;
+    2.Polygon point coordinates taken from: https://bennettfeely.com/clippy;
+    3.Adding on-click color to SVG-shapes https://css-tricks.com/click-svg-to-focus/ -->
+   
+    <div> 
+      <div class="grid-container"> <!--TILE-GRID 3x4-->
+
+        <div class="grid-item"> <!--1:HEXAGON --> 
+          <svg id="hexagon-1">
+            <a xlink:href="#0">
+            <polygon points="50 0 100 25 100 75 50 100 0 75 0 25">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--2:TRIANGLE-UP-->
+          <svg id="triangle-up-2">
+            <a xlink:href="#0">
+              <polygon points="50 0 0 100 100 100">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--3:CIRCLE-->
+          <svg id="circle-3">
+            <a xlink:href="#0">
+              <circle cx="50" cy="50" r="50"/>
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--4:TRAPEZOID-->
+          <svg id="trapezoid-4">
+            <a xlink:href="#0">
+              <polygon points="20 0 80 0 100 100 0 100">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--5:CIRCLE-->
+          <svg id="circle-5">
+            <a xlink:href="#0">
+              <circle cx="50" cy="50" r="50"/>
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--6:PARALLELOGRAM-->
+          <svg id="parallelogram-6">
+            <a xlink:href="#0">
+              <polygon points="25 0 100 0 75 100 0 100">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--7:PENTAGON-->
+          <svg id="pentagon-7">
+            <a xlink:href="#0">
+              <polygon points="50 0 100 38 82 100 18 100 0 38">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"><!--8:ROMBUS -->
+          <svg id="rombus-8">
+            <a xlink:href="#0">
+              <polygon points="50 0 100 50 50 100 0 50">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--9:TRIANGLE-DOWN-->
+          <svg id="triangle-down-9">
+            <a xlink:href="#0">
+              <polygon points="50 100 0 0 100 0">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--10:CIRCLE-->
+          <svg id="circle-10">
+            <a xlink:href="#0">
+              <circle cx="50" cy="50" r="50"/>
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--11:PARALLELOGRAM-->
+          <svg id="parallelogram-11">
+            <a xlink:href="#0">
+              <polygon points="0 0 75 0 100 100 25 100">
+            </a>
+          </svg>
+        </div>
+
+        <div class="grid-item"> <!--12:HEXAGON-->
+          <svg id="hexagon-12">
+            <a xlink:href="#0">
+              <polygon points="50 0 100 25 100 75 50 100 0 75 0 25">
+            </a>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
