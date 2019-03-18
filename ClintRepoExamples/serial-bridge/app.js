@@ -92,6 +92,17 @@ port.pipe(parser);
 parser.on('data', function(data) {
  console.log("Serial Received: " + data);
 
+
+ 
+// THE NEW CODE THAT CHANGES THE LED DEPENDING ON THE VALUE RECEIVED FROM THE ARDUINO
+if (data > 512) {
+  port.write('H');
+}
+else {
+  port.write('L');
+}
+
+
  // Send the text we received on the serial port to all clients
  if (serialWs) {
     serialWs.clients.forEach(function(client) {
