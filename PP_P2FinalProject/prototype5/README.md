@@ -1,4 +1,10 @@
-We are using a Ultrasonic sensor (HC-SR04) to turn on different leds depending on the proximity. 
+We are using an Ultrasonic sensor (HC-SR04) to turn on different LEDs depending on the proximity. 
 
+**Contributors**
 
-contributors: Christoffer Zackheden, Tirsa Ramos-Pedersen, Veronika Bendoriute,Simon Ulvsand Georgi Gallinov Yordanov, and Denisa Maria
+  - Veronika Bendoriūtė
+  - Denisa Maria Bucuroiu
+  - Georgi Galinov Yordanov
+  - Tirsa Ramos-Pedersen
+  - Simon Ulvsand
+  - Jeppe Christoffer Zackheden
