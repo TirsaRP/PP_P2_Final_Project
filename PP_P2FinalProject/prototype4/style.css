@@ -50,6 +50,7 @@ a:hover {
 
 svg {
   fill: white;
+  filter: drop-shadow( 0 5px 5px gray);
 }
 
 /*DEFINE COLOR CHANGE ON THE TILES*/
