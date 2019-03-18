@@ -1,0 +1,105 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+h1 {
+  color: darkred;
+}
+a, a:link, a:visited {
+  color: darkred;
+}
+a:hover {
+  color: black;
+}
+
+#lastMsg {
+  font-family: monospace;
+}
+
+#sentCommands {
+  overflow: scroll;
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid black;
+  background: white;
+}
+
+/* This Grid Layout Module code taken from https://www.w3schools.com/css/css_grid.asp */
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 5px;
+  background-color: rgb(83, 83, 83);
+  padding: 10px;
+}
+
+.grid-item {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(145, 145, 145, 0.8);
+  padding: 10px;
+  font-size: 8px;
+  text-align: center;
+}
+
+svg {
+  fill: white;
+}
+
+/*DEFINE COLOR CHANGE ON THE TILES*/
+/*1st row: YELLOW*/
+#hexagon-1 a:focus {
+  fill: #FFFF00; /*50% brightness*/
+}
+
+#trapezoid-4 a:focus {
+  fill: #FFFF80; /*75% brightness*/
+}
+
+#pentagon-7 a:focus {
+  fill: #FFFFB3; /*85% brightness*/
+}
+
+#circle-10 a:focus {
+  fill: #FFFFE6; /*95% brightness*/
+}
+
+/*2nd row: ORANGE*/
+#triangle-up-2 a:focus {
+  fill: #FF6600; /*50% brightness*/
+}
+
+#circle-5 a:focus {
+  fill: #FF8533; /*60% brightness*/
+}
+
+#rombus-8 a:focus {
+  fill: #FFB380; /*75% brightness*/
+}
+
+#parallelogram-11 a:focus {
+  fill: #ffE0CC; /*95% brightness*/
+}
+
+/*3rd row: RED*/
+#circle-3 a:focus {
+  fill: #FF0000; /*50% brightness*/
+}
+
+#parallelogram-6 a:focus {
+  fill: #FF4D4D; /*65% brightness*/
+}
+
+#triangle-down-9 a:focus {
+  fill: #FF9999; /*80% brightness*/
+}
+
+#hexagon-12 a:focus {
+  fill: #FFE6E6; /*95% brightness*/
+}
