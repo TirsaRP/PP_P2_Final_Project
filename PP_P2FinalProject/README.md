@@ -8,7 +8,7 @@ Physical Prototyping & Programming II joint final project: Group 6
 The goal of the project is to explore possible ways to interact with and manipulate light to:
   - Turn it on/off
   - Change the hue
-  - Change the brigtness
+  - Change the brigthness
   
 The project however does not aim to design light, but specifically focuses on human interaction with sensors, collection of data and using that data through a serial bridge to change the behaviour of lights.
 
