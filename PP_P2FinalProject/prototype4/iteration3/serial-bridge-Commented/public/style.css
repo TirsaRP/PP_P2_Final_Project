@@ -1,0 +1,55 @@
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  background-color: whitesmoke;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+h1 {
+  color: darkred;
+}
+a, a:link, a:visited {
+  color: darkred;
+}
+a:hover {
+  color: black;
+}
+
+#lastMsg {
+  font-family: monospace;
+}
+
+#sentCommands {
+  overflow: scroll;
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid black;
+  background: white;
+}
+
+/* This Grid Layout Module code taken from https://www.w3schools.com/css/css_grid.asp */
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 5px;
+  background-color: rgb(83, 83, 83);
+  padding: 10px;
+}
+
+.grid-item {
+  width: 120px;
+  height: 120px;
+  background-color: rgba(145, 145, 145, 0.8);
+  padding: 10px;
+  font-size: 8px;
+  text-align: center;
+}
+
+svg {
+  fill: white;
+  filter: drop-shadow(0 5px 5px black);
+}
