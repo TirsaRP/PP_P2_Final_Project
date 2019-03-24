@@ -57,27 +57,34 @@ void loop() {
   buttonState6 = digitalRead(buttonPin6);
 
 
-  if (buttonState2 == HIGH) { // Changes the brightness of the LED
+  if (buttonState2 == HIGH) { // Changes the brightness of the LED    lowest brightness level
     analogWrite(ledPin, 63);
+    report(buttonPin2);
   } 
 
  else if (buttonState3 == HIGH) {
     analogWrite(ledPin, 126); // Brightness value goes up
+    report(buttonPin3);
   } 
 
  else if (buttonState4 == HIGH) {
     analogWrite(ledPin, 192);
+    report(buttonPin4);
   } 
 
  else if (buttonState5 == HIGH) {
     analogWrite(ledPin, 255); // Highest value of brighness
+    report(buttonPin5);
   } 
   
  if (buttonState6 == HIGH) { // Button to turn of LED
     analogWrite(ledPin, 0); 
+    report(buttonPin6);
  }
   // Process serial communication
   recvWithStartEndMarkers();
+  
+  
 
   // If we received a command, process it
   if (newData == true) {
@@ -103,7 +110,14 @@ void loop() {
   if (millis() - lastFakeReport > 2000) {
     report(MsgPosition, (random(0,100)));
     lastFakeReport = millis();    
-  }
+  } 
+}
+void report(int buttonBrightness){
+  Serial.print("button ");
+  Serial.print(buttonBrightness);
+  Serial.print(" was pressed");
+  Serial.print("\r\n");
+  Serial.flush();
 }
 
 // ---- Serial communication

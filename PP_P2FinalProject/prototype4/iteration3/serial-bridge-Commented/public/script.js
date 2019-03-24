@@ -14,13 +14,14 @@ function onDocumentReady() {
   var lastMsg = null;
   lastMsgEl = document.getElementById("lastMsg");
   socket.onmessage = function(evt) {
-    // Debug: see raw received message
+    //Debug: see raw received message
     //console.log(evt.data);
 
     // Parse message, assuming <Text,Int,Float>
     var d = evt.data.trim();
     if (d.charAt(0) == "<" && d.charAt(d.length - 1) == ">") {
-      // Clint's Code commented out
+     
+     // Clint's Code commented out
       d = d.split(",");
       if (d.length == 3) {
         // Yes, it has three components as we hoped
@@ -32,21 +33,13 @@ function onDocumentReady() {
         return;
       }
     }
-    /*
-    //added code 
-      let distance = d.substring(1, d.length - 1); //test if end index should be 1 or 2
-      let distanceAsNumber = parseInt(distance);
-      setColorWithDistance(distanceAsNumber);
-    } else {
-      console.log(d);
-    }
-*/
+    
     // Doesn't seem to be formatted correctly, just display as-is
     if (evt.data != lastMsg) {
       lastMsgEl.innerText = evt.data;
       lastMsg = evt.data;
 
-      highlightRow(evt.data);
+      highlightRow(evt.data);   //ADDED FUNCTION THAT WILL TAKE THE INPUT OF THE CLICKED BUTTON AND CHANGE THE COLOR IN THE GUI
     }
   };
   socket.onopen = function(evt) {
@@ -57,6 +50,34 @@ function onDocumentReady() {
     evt.preventDefault();
     var send = document.getElementById("sendtoSerial").value;
     socket.send(send);
+    ////////////// NEW CODE THAT HANDLES THE INPUT EVENT BY CHANGING THE COLOR OF THE GUI ROWS  //////////////////
+    if (send == 1) {
+      document.getElementById("circle-10").style.fill = "#FFFFE6";
+      document.getElementById("parallelogram-11").style.fill = "#FFE0CC";
+      document.getElementById("hexagon-12").style.fill = "#FFE6E6";
+      console.log("Row " + send + " has been illuminated");
+    } else if (send == 2) {
+      document.getElementById("pentagon-7").style.fill = "#FFFFB3";
+      document.getElementById("rombus-8").style.fill = "#FFB380";
+      document.getElementById("triangle-down-9").style.fill = "#FF9999";
+      console.log("Row " + send + " has been illuminated");
+    } else if (send == 3) {
+      document.getElementById("trapezoid-4").style.fill = "#FFFF80";
+      document.getElementById("circle-5").style.fill = "#FF8533";
+      document.getElementById("parallelogram-6").style.fill = "#FF4D4D";
+      console.log("Row " + send + " has been illuminated");
+    } else if (send == 4) {
+      document.getElementById("hexagon-1").style.fill = "#FFFF00";
+      document.getElementById("triangle-up-2").style.fill = "#FF6600";
+      document.getElementById("circle-3").style.fill = "#FF0000";
+      console.log("Row " + send + " has been illuminated");
+    } else {
+      for (i = 0; i < shapeColorArray.length; i++) {
+        let color = "";
+        document.getElementById(shapeColorArray[i][0]).style.fill = color; //RESETS TILES TO GREY IF ANY OTHER NUMBER BESIDES 1-4 IS INPUT
+        console.log("please input a number between 1-4");   //TELLS THE USER TO INPUT ANOTHER NUMBER
+      }
+    }
   });
 }
 
@@ -88,6 +109,9 @@ function changeColor(index) {
     document.getElementById(shapeColorArray[i][0]).style.fill = color;
   }
 }
+
+
+////////////// NEW CODE THAT HANDLES THE CLICK OF BUTTONS ON ARDUINO //////////////////
 
 function highlightRow(buttonData) {
   if (buttonData.indexOf("2") > -1) {
