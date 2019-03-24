@@ -126,7 +126,7 @@ port.on('error', function(err){
 })
 port.pipe(parser);
 parser.on('data', function(data) {
- console.log("Serial Received: " + data);
+ console.log("Serial Received: " + data); //ARDUINO CODE SENDS TO ME AND IT PRINTS 
 
 /*
 // THE NEW CODE THAT CHANGES THE LED DEPENDING ON THE VALUE RECEIVED FROM THE ARDUINO

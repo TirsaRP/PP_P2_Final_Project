@@ -2,6 +2,19 @@
 
 //added extra comments to better understand what is going on in the code
 
+const int buttonPin2 = 2;
+const int buttonPin3 = 3; // the number of the pushbutton pin
+const int buttonPin4 = 4;
+const int buttonPin5 = 5;
+const int buttonPin6 = 6;
+const int ledPin =  9;      // the number of the LED pin
+
+// variables will change:
+int buttonState2 = 0;         // variable for reading the pushbutton status
+int buttonState3 = 0;
+int buttonState4 = 0;
+int buttonState5 = 0;
+int buttonState6 = 0;
 // Serial communication
 const byte numChars = 32;
 char receivedChars[numChars];
@@ -21,29 +34,48 @@ enum {                  //look up table. the variables equal the numbers that ar
   MsgPosition,    // 4
 };
 
-//////////////////// OUR CODE ONE //////////////////
-/*#define trigPin 12  //ultrasonic sensor trig pin
-#define echoPin 11  //ultrasonic sensor echo pin
-#define led 10
-#define led2 9
-#define led3 8
-#define led4 
 
 void setup()  {
+   
+  pinMode(ledPin, OUTPUT); // LED as output
+  pinMode(buttonPin2, INPUT); // Buttons as input
+  pinMode(buttonPin3, INPUT);
+  pinMode(buttonPin4, INPUT);
+  pinMode(buttonPin5, INPUT);
+  pinMode(buttonPin6, INPUT);
  Serial.begin(115200);        //starts serial communication
-
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(led, OUTPUT);
-  pinMode(led2, OUTPUT);
-  pinMode(led3, OUTPUT); // added a third led to the original code
-
-// report(MsgAcknowledge, "Ready");  //report(0, "ready");
-} */
-
-///////////// END OUR CODE ONE ///////
+  
+ report(MsgAcknowledge, "Ready");  //report(0, "ready");
+} 
 
 void loop() {
+  
+  buttonState2 = digitalRead(buttonPin2);     // read the state of the pushbutton value:
+  buttonState3 = digitalRead(buttonPin3);
+  buttonState4 = digitalRead(buttonPin4);
+  buttonState5 = digitalRead(buttonPin5);
+  buttonState6 = digitalRead(buttonPin6);
+
+
+  if (buttonState2 == HIGH) { // Changes the brightness of the LED
+    analogWrite(ledPin, 63);
+  } 
+
+ else if (buttonState3 == HIGH) {
+    analogWrite(ledPin, 126); // Brightness value goes up
+  } 
+
+ else if (buttonState4 == HIGH) {
+    analogWrite(ledPin, 192);
+  } 
+
+ else if (buttonState5 == HIGH) {
+    analogWrite(ledPin, 255); // Highest value of brighness
+  } 
+  
+ if (buttonState6 == HIGH) { // Button to turn of LED
+    analogWrite(ledPin, 0); 
+ }
   // Process serial communication
   recvWithStartEndMarkers();
 
@@ -51,94 +83,49 @@ void loop() {
   if (newData == true) {
     strcpy(tempChars, receivedChars);
     parseData();
-
+    switch (integerFromPC) {
+      case MsgPosition:               //4
+        // Report fake result
+        report(MsgPosition, 10);      //report(4,10);
+        break;
+      case MsgMove:                   //2
+        // Pretend to do something
+        report(MsgMoveResult, 10);    //report(3, 10);
+        break;
+      }
+      
+      // Debug: print parsed command to serial
+      // showParsedData();
       newData = false;
     }
-}
- long duration, distance;
-  digitalWrite(trigPin, LOW);  // Added this line
-  delayMicroseconds(2); // Added this line
-  digitalWrite(trigPin, HIGH);
 
-//  delayMicroseconds(1000); - Removed this line
-  delayMicroseconds(10); // Added this line
-
-  digitalWrite(trigPin, LOW);
-  duration = pulseIn(echoPin, HIGH);
-  distance = (duration/2) / 29.1;
-
-  if (distance <= 100) {  // First LED is turned on within the distance of one meter. 
-    digitalWrite(led,HIGH); 
-  digitalWrite(led2,LOW);
-  digitalWrite(led3,LOW);
-}
-
-else if (distance > 100 && distance <= 200) { // between the distance of 1 and 2 meters, the second LED lights up.
-  digitalWrite(led,LOW);
-  digitalWrite(led2,HIGH);
-  digitalWrite(led3,LOW);
-}
-
-else { // If above conditions are not met, the third LED will be lit (over 2 meters).
-    digitalWrite(led,LOW);
-    digitalWrite(led2,LOW);
-    digitalWrite(led3,HIGH);
+  // Every so often report a fake position
+  if (millis() - lastFakeReport > 2000) {
+    report(MsgPosition, (random(0,100)));
+    lastFakeReport = millis();    
   }
-
- 
-  if (distance > 300 || distance <= 0){
-    Serial.println("Out of range");
-  }
-  else {
-    Serial.print("<");
-    Serial.print(distance);
-    Serial.print(">\r\n");
-    Serial.flush();
-  }
-  delay(500);
-
-  //////////////// TEST CODE //////////////////
-
-  //make switch statement if 1-3 turn a certain light now. 
-
-switch (messageFromPC[0]) {
-  case 1:
-   digitalWrite(trigPin, HIGH);
-    break;
-  case 2:
-   
-    break;
-  case 3:
-    
-    break;
-
-    default:
-
 }
-
 
 // ---- Serial communication
-/*void report(int code, const char *message) {
+void report(int code, const char *message) {
   Serial.print("<");                          //prints "<ws-bridge, code, message >"
-  Serial.print("COLOR");
+  Serial.print("ws-bridge,");
   Serial.write(code);
   Serial.write(",");
   Serial.write(message);
   Serial.print(">\r\n");
   Serial.flush();
 }
-*/
+
 void report(int code, int message) {
   Serial.print("<");                          //prints "<ws-bridge, code, message >"
-  Serial.print("Color");
+  Serial.print("ws-bridge,");
   Serial.print(code);
   Serial.print(",");
   Serial.print(message);
   Serial.print(">\r\n");
   Serial.flush();
-} 
-
-//// KEEP CODE BELOW ////
+}
 
 void recvWithStartEndMarkers() {
     static boolean recvInProgress = false;
@@ -162,8 +149,7 @@ void recvWithStartEndMarkers() {
                 receivedChars[ndx] = '\0'; // terminate the string   (no char received)
                 recvInProgress = false;   //if  receiving is NOT in progress (false) 
                 ndx = 0;                  //and no bytes are coming in    --terminate string 
-                newData = true;     
-                Serial.println(receivedChars);      
+                newData = true;           
             }
         }
 
@@ -180,18 +166,18 @@ void parseData() {      // split the data into its parts
     strcpy(messageFromPC, strtokIndx); // copy it to messageFromPC
  
     strtokIndx = strtok(NULL, ","); // this continues where the previous call left off
-   // integerFromPC = atoi(strtokIndx);     // convert the ascii to an integer
+    integerFromPC = atoi(strtokIndx);     // convert the ascii to an integer
 
-   // strtokIndx = strtok(NULL, ",");
-   // floatFromPC = atof(strtokIndx);     // convert ascii to a float
+    strtokIndx = strtok(NULL, ",");
+    floatFromPC = atof(strtokIndx);     // convert ascii to a float
 }
 
 void showParsedData() {
     Serial.print("Message ");
     Serial.println(messageFromPC);
-   // Serial.print("Integer ");
-   // Serial.println(integerFromPC);
-   // Serial.print("Float ");
-   // Serial.println(floatFromPC);
+    Serial.print("Integer ");
+    Serial.println(integerFromPC);
+    Serial.print("Float ");
+    Serial.println(floatFromPC);
 }
 
