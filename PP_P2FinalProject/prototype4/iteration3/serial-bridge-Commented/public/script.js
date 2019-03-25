@@ -20,8 +20,6 @@ function onDocumentReady() {
     // Parse message, assuming <Text,Int,Float>
     var d = evt.data.trim();
     if (d.charAt(0) == "<" && d.charAt(d.length - 1) == ">") {
-     
-     // Clint's Code commented out
       d = d.split(",");
       if (d.length == 3) {
         // Yes, it has three components as we hoped
@@ -39,8 +37,8 @@ function onDocumentReady() {
       lastMsgEl.innerText = evt.data;
       lastMsg = evt.data;
 
-      highlightRow(evt.data);   //ADDED FUNCTION THAT WILL TAKE THE INPUT OF THE CLICKED BUTTON AND CHANGE THE COLOR IN THE GUI
-    }
+      highlightRow(evt.data);   //ADDED FUNCTION THAT WILL TAKE THE INPUT OF THE CLICKED BUTTON ON THE ARDUINO 
+    }                           //AND CHANGE THE COLOR IN EACH ROW OF THE GUI
   };
   socket.onopen = function(evt) {
     console.log("Socket opened");
@@ -50,6 +48,7 @@ function onDocumentReady() {
     evt.preventDefault();
     var send = document.getElementById("sendtoSerial").value;
     socket.send(send);
+
     ////////////// NEW CODE THAT HANDLES THE INPUT EVENT BY CHANGING THE COLOR OF THE GUI ROWS  //////////////////
     if (send == 1) {
       document.getElementById("circle-10").style.fill = "#FFFFE6";
@@ -76,14 +75,13 @@ function onDocumentReady() {
       for (i = 0; i < shapeColorArray.length; i++) {
         let color = "";
         document.getElementById(shapeColorArray[i][0]).style.fill = color; //RESETS TILES TO GREY IF ANY OTHER NUMBER BESIDES 1-4 IS INPUT
-        console.log("please input a number between 1-4");   //TELLS THE USER TO INPUT ANOTHER NUMBER
+        console.log("please input a number between 1-4");                 //TELLS THE USER TO INPUT ANOTHER NUMBER
       }
     }
   });
 }
 
-
-////////////// NEW CODE THAT HANDLES THE CLICK EVENTS OF THE GRID  //////////////////
+////////////// NEW CODE THAT HANDLES THE CLICK EVENTS OF THE GRID IN THE BROWSER  //////////////////
 
 //array of shape ID's and color
 let shapeColorArray = [
@@ -101,8 +99,7 @@ let shapeColorArray = [
   ["hexagon-12", "#FFE6E6"] //shape 12, red at lowest brightness and hue level. [11]
 ];
 
-function changeColor(index) {
-  //function that changes the color of the GUI tiles
+function changeColor(index) {      //function that changes the color of the GUI tiles
   for (i = 0; i < shapeColorArray.length; i++) {
     let color = "";
     if (index === i) {
@@ -112,8 +109,7 @@ function changeColor(index) {
   }
 }
 
-
-////////////// NEW CODE THAT HANDLES THE CLICK OF BUTTONS ON ARDUINO //////////////////
+////////////// NEW CODE THAT HANDLES THE CLICK OF BUTTONS ON ARDUINO RESULTING IN HIGHLIGHTED ROW OF GUI //////////////////
 
 function highlightRow(buttonData) {
   if (buttonData.indexOf("2") > -1) {

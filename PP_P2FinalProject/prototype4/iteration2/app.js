@@ -3,7 +3,7 @@
 
 // Code edited by: Tirsa Ramos-Pedersen
 
-//array of shape ID's and color
+//array of shape ID's and color of GUI 
 let shapeColorArray = [
   ["hexagon-1", "#FFFF00"],
   ["triangle-up-2", "#FF6600"],
@@ -19,7 +19,7 @@ let shapeColorArray = [
   ["hexagon-12", "#FFE6E6"]
 ];
 
-function changeColor(index) {
+function changeColor(index) {         //function that changes the color of the GUI elements 
     for (i = 0; i < shapeColorArray.length; i++) {
       let color = "";
       if (index === i) {

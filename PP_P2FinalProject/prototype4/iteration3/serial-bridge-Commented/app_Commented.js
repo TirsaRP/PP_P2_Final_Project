@@ -1,5 +1,6 @@
 
-//added extra comments to better understand what is going on in the code
+//added extra comments to better understand what is going on in the code (Denisa)
+//I DID NOT CHANGE ANY CODE IN THIS FILE BECAUSE IT DEALS WITH THE SERVER CONNECTION (ROSA) 
 
 //Defining the variables:
 //Requires the express module and places it in a variable; Express is the most common used wed framework for Node; 
@@ -127,20 +128,6 @@ port.on('error', function(err){
 port.pipe(parser);
 parser.on('data', function(data) {
  console.log("Serial Received: " + data); //ARDUINO CODE SENDS TO ME AND IT PRINTS 
-
-/*
-// THE NEW CODE THAT CHANGES THE LED DEPENDING ON THE VALUE RECEIVED FROM THE ARDUINO
-if (data == 1) {
-  port.write('H');
-}
-else {
-  port.write('L');
-}
-*/
-
-
-  
-
 
  // Send the text we received on the serial port to all clients
  if (serialWs) {  
