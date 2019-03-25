@@ -130,7 +130,7 @@ parser.on('data', function(data) {
 
 /*
 // THE NEW CODE THAT CHANGES THE LED DEPENDING ON THE VALUE RECEIVED FROM THE ARDUINO
-if (data > 512) {
+if (data == 1) {
   port.write('H');
 }
 else {

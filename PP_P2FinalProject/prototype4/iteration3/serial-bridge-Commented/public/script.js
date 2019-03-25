@@ -56,6 +56,7 @@ function onDocumentReady() {
       document.getElementById("parallelogram-11").style.fill = "#FFE0CC";
       document.getElementById("hexagon-12").style.fill = "#FFE6E6";
       console.log("Row " + send + " has been illuminated");
+
     } else if (send == 2) {
       document.getElementById("pentagon-7").style.fill = "#FFFFB3";
       document.getElementById("rombus-8").style.fill = "#FFB380";
@@ -80,6 +81,7 @@ function onDocumentReady() {
     }
   });
 }
+
 
 ////////////// NEW CODE THAT HANDLES THE CLICK EVENTS OF THE GRID  //////////////////
 

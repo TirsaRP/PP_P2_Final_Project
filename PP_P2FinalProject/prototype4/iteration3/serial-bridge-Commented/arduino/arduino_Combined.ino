@@ -43,6 +43,7 @@ void setup()  {
   pinMode(buttonPin4, INPUT);
   pinMode(buttonPin5, INPUT);
   pinMode(buttonPin6, INPUT);
+ 
  Serial.begin(115200);        //starts serial communication
   
  report(MsgAcknowledge, "Ready");  //report(0, "ready");
@@ -121,14 +122,32 @@ void report(int buttonBrightness){
 }
 
 // ---- Serial communication
-void report(int code, const char *message) {
+void report(int buttonBrightness, const char *message) {
+  
+  Serial.print("<");                          //prints "<ws-bridge, code, message >"
+  Serial.print("press a button");
+ 
+  Serial.print(">\r\n");
+  Serial.flush(); 
+}
+
+void report(int buttonBrightness, int message) {
+  Serial.print("<");                          //prints "<ws-bridge, code, message >"
+  Serial.print("press a button");
+ 
+  Serial.print(">\r\n");
+  Serial.flush();
+}
+
+/*void report(int code, const char *message) {
+  
   Serial.print("<");                          //prints "<ws-bridge, code, message >"
   Serial.print("ws-bridge,");
   Serial.write(code);
   Serial.write(",");
   Serial.write(message);
   Serial.print(">\r\n");
-  Serial.flush();
+  Serial.flush(); 
 }
 
 void report(int code, int message) {
@@ -139,7 +158,8 @@ void report(int code, int message) {
   Serial.print(message);
   Serial.print(">\r\n");
   Serial.flush();
-}
+}*/
+
 
 void recvWithStartEndMarkers() {
     static boolean recvInProgress = false;
@@ -151,6 +171,33 @@ void recvWithStartEndMarkers() {
     while (Serial.available() > 0 && newData == false) {
         rc = Serial.read();  // rc= received char?? 
 
+    if (rc == '1'){
+      analogWrite(ledPin, 63);
+    report(buttonPin2);
+      
+    }
+    if (rc == '2'){
+     analogWrite(ledPin, 126); // Brightness value goes up
+    report(buttonPin3);
+    }
+    if (rc == '3'){
+      analogWrite(ledPin, 192);
+    report(buttonPin4);
+    }
+    if (rc == '4'){
+      analogWrite(ledPin, 255);
+    report(buttonPin5);
+    }
+    if (rc == '5'){
+       analogWrite(ledPin, 0);
+    report(buttonPin6);
+    }
+  
+
+
+
+
+
         if (recvInProgress == true) { 
             if (rc != endMarker) {     //if the rc isn't the endmarker">" then receiving data 
                 receivedChars[ndx] = rc;    //received[i] = rc
@@ -158,6 +205,7 @@ void recvWithStartEndMarkers() {
                 if (ndx >= numChars) {    //if "i" is greater or equal to numChars
                     ndx = numChars - 1;   //make "i" equal numChar -1. if i goes outside of the buffer, it puts it in the last index of the array
                 }
+
             }
             else {
                 receivedChars[ndx] = '\0'; // terminate the string   (no char received)
@@ -170,7 +218,7 @@ void recvWithStartEndMarkers() {
         else if (rc == startMarker) {   //looking for the start marker "<"
             recvInProgress = true;      //receive data in progress 
         }
-    }
+    } 
 }
 
 void parseData() {      // split the data into its parts
@@ -184,6 +232,31 @@ void parseData() {      // split the data into its parts
 
     strtokIndx = strtok(NULL, ",");
     floatFromPC = atof(strtokIndx);     // convert ascii to a float
+   /* 
+      if (messageFromPC == 1) { // Changes the brightness of the LED    lowest brightness level
+    analogWrite(ledPin, 63);
+    report(buttonPin2);
+  } 
+
+ else if (integerFromPC == 2) {
+    analogWrite(ledPin, 126); // Brightness value goes up
+    report(buttonPin3);
+  } 
+
+ else if (floatFromPC == 3) {
+    analogWrite(ledPin, 192);
+    report(buttonPin4);
+  } 
+
+ else if (messageFromPC == 4) {
+    analogWrite(ledPin, 255); // Highest value of brighness
+    report(buttonPin5);
+  } 
+  
+ if (integerFromPC >= 5) { // Button to turn off LED
+    analogWrite(ledPin, 0); 
+    report(buttonPin6);
+ }*/
 }
 
 void showParsedData() {
@@ -194,4 +267,3 @@ void showParsedData() {
     Serial.print("Float ");
     Serial.println(floatFromPC);
 }
-
