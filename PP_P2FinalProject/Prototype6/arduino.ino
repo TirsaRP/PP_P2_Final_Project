@@ -1,5 +1,5 @@
 // arduino code taken from: https://www.instructables.com/id/Simple-Arduino-and-HC-SR04-Example/
-// edited by: Christoffer Zackheden
+// edited by: Simon Ulvsand & Christoffer Zackheden
 
 #define trigPin 12
 #define echoPin 11
