@@ -6,7 +6,7 @@
 - When we had a working arduino sketch we sent the data to our computer via the serial bridge and used JavaScript to be able to communicate and change the lights on our arduino board. 
 - We use this prototype to simulate an automated situation where lights turn on based on the proximity of the user. 
 
-##  Contributors**
+##  Contributors
 - Simon Ulvsand 
 - Christoffer Zackheden
 
