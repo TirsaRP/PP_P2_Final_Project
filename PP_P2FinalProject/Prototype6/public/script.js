@@ -68,13 +68,13 @@ function chooseLed(distance) {
 
     } else if (distance <= 30) {
         document.getElementById("sendtoSerial").value = 'c';
-        
-    } else if (distance > 30) {
-        document.getElementById("sendtoSerial").value = 'd';
 
     } 
-}
+    else if (distance > 30) {
+      document.getElementById("sendtoSerial").value = 'd';
 
+  } 
+}
 
 
 
