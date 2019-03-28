@@ -1,5 +1,5 @@
 // arduino code taken from: https://www.instructables.com/id/Simple-Arduino-and-HC-SR04-Example/
-// edited by: Simon Ulvsand & Christoffer Zackheden
+// edited by: Simon Ulvsand 
 
 #define trigPin 12
 #define echoPin 11
@@ -96,4 +96,3 @@ void loop() {
     Serial.println("");
   }
   delay(100);
-}
