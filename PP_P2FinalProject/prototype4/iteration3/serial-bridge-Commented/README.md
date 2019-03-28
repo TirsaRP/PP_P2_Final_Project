@@ -1,3 +1,20 @@
+# Description 
+
+This prototype handles the browser interface for our prototype.   
+We have HTML, CSS, Arduino, and JS files that allow the user to click on different shapes on the grid of tiles and change the color of the selected shape element.  
+
+These shapes represent the tiles that will be activated in our physical prototype by a user stepping or pushing down on the tiles.  
+The user can also press buttons on an arduino board to change both the brightness of the LED and change the colors of each row of the GUI.   
+The user can also input a number between 1-4 in the input field of the GUI to turn on the LED on the arduino and change the brightness level. If the user inputs 5, the LED turns off.  
+
+The user will first need to set up the serial-bridge connection (instructions below) in order to interact with the GUI. 
+
+#Contributors
+
+Code added to the script.js and arduino_Combined.ino files by Tirsa Ramos-Pedersen.  
+  - Veronika Bendoriūtė (GUI)
+  - Tirsa Ramos-Pedersen (JS)
+  - Jeppe Christoffer Zackheden (Arduino)
 
 
 
