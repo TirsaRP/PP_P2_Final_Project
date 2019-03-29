@@ -1,7 +1,7 @@
 # PP and P2 Final Project
 Physical Prototyping & Programming II joint final project: Group 6
 
-# Group 6 Code
+#Group 6 Code
 Our code can be found in the PP_P2FinalProject folder. Each member took responsibility for a prototype example which have been separated by folders.   
 
 
