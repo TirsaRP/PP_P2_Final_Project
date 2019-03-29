@@ -56,12 +56,12 @@ void loop() {
     }
 }
  long duration, distance;
-  digitalWrite(trigPin, LOW);  // Added this line
-  delayMicroseconds(2); // Added this line
-  digitalWrite(trigPin, HIGH);
+  digitalWrite(trigPin, LOW);  // Added this line -LOW turns off light
+  delayMicroseconds(2); // Added this line - delay
+  digitalWrite(trigPin, HIGH); // HIGH turns light on
 
 //  delayMicroseconds(1000); - Removed this line
-  delayMicroseconds(10); // Added this line
+  delayMicroseconds(10); // Added this line - decrease delay time
 
   digitalWrite(trigPin, LOW);
   duration = pulseIn(echoPin, HIGH);
@@ -115,6 +115,7 @@ switch (messageFromPC[0]) {
     default:
 
 }
+////////// END TEST CODE /////////////
 
 
 // ---- Serial communication

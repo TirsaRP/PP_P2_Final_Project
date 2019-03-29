@@ -8,7 +8,7 @@ Physical Prototyping & Programming II joint final project: Group 6
 The goal of the project is to explore ways to interact with and manipulate light to:
   - Turn it on/off
   - Change the hue
-  - Change the brigthness
+  - Change the brightness
   
 The project however does not aim to design light, but specifically focuses on human interaction with sensors, collection of data through a serial bridge and use of that data to change the behaviour of lights.
 
@@ -25,20 +25,17 @@ We are not to solve a public safety problem, but rather aim to explore ways to m
 
 **How the project is useful**
 
-The examples and code in this repository can be helpful for public space designers to explore different ways of interaction using serial bridge for a quick and easy lo-fi prototyping.
+The examples and code in this repository can be helpful for public space designers to explore different ways of interaction using serial bridge for quick and easy lo-fi prototyping.
 
 
 
 
 **How users can get started with the project:**
 
-Before starting, read the README files in every folder to get informed about what the examples do.
-You might need to downgrade your node.js version for the examples to work.
-  
-To get started:
-```sh
-<code goes here>
-```
+Before starting, read the README files in every folder to get informed about what the examples do.  
+Follow the serial-bridge README.md or motion-stream README.md files instructions.  
+You might need to downgrade your node.js version for the examples to work.  
+
 
 
 **Group members and contributors**

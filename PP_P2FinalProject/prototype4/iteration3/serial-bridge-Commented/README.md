@@ -9,12 +9,19 @@ The user can also input a number between 1-4 in the input field of the GUI to tu
 
 The user will first need to set up the serial-bridge connection (instructions below) in order to interact with the GUI. 
 
-#Contributors
+# Contributors
 
-Code added to the script.js and arduino_Combined.ino files by Tirsa Ramos-Pedersen.  
+Code and comments added to the **script.js** and **arduino_Combined.ino** files by Tirsa Ramos-Pedersen.  
+
   - Veronika Bendoriūtė (GUI)
   - Tirsa Ramos-Pedersen (JS)
   - Jeppe Christoffer Zackheden (Arduino)
+
+# Example Source
+
+Examples taken from [Clint Heyer]'s interactivity repository
+
+   [Clint Heyer]: <https://github.com/ClintH/interactivity>
 
 
 
