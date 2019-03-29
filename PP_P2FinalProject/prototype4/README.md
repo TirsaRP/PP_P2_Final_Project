@@ -10,8 +10,7 @@ The user can also input a number between 1-4 in the input field of the GUI to tu
 **Go to Iteration 3 for finalized code** 
 
 Code and comments added to the **script.js** and **arduino_Combined.ino** files by Tirsa Ramos-Pedersen.  
-Description and instructions for the code in [prototype4/iteration3/serial-bridge-Commented/README.md] file.   
-[prototype4/iteration3/serial-bridge-Commented/README.md]: <https://github.com/TirsaRP/PP_P2_Final_Project/blob/master/PP_P2FinalProject/prototype4/iteration3/serial-bridge-Commented/README.md> 
+Description and instructions for the code in the <https://github.com/TirsaRP/PP_P2_Final_Project/blob/master/PP_P2FinalProject/prototype4/iteration3/serial-bridge-Commented/README.md> file.
 
 **Contributors**
 
